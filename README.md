@@ -1,3 +1,12 @@
+# TH-Backend Project
+
+[![Build Status](https://dev.azure.com/theethawats/theethawatpredev/_apis/build/status/theethawat.th-backend?branchName=master)](https://dev.azure.com/theethawats/theethawatpredev/_build/latest?definitionId=3&branchName=master)
+
+## Description
+* Distributed Computing and Web Technologies Assignment 
+* React + Firebase Authenthication + Firebase Realtime Database
+* Theethawat Savastham
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
