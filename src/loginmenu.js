@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import 'bulma/css/bulma.css'
 import auth from './firebase'
+//import firebase from 'firebase'
 
 class Loginmenu extends Component {
     //constructor like oop
@@ -28,7 +29,17 @@ class Loginmenu extends Component {
             email:this.email,
             password:this.password
         })
-        console.log("Email:"+ this.state.email + "Password" + this.state.password)
+        auth.signInWithEmailAndPassword(this.state.email,this.state.password)
+            .then(response => {
+                this.setState({
+                    currentUser:response.user
+                })
+            })
+            .catch(error => {
+                this.setState({
+                    message:error.message
+                })
+            })
     }
 
     render() {
