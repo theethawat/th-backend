@@ -1,14 +1,16 @@
-import React from 'react';
+import React ,{Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Loginmenu from './Loginmenu';
 
-function App() {
-  return (
-    <div>
-        <h1>Welcome to Admin Site </h1>
-        <button onClick={signIn}> Login </button>
+class App extends Component {
+  render(){
+    return (
+    <div className="App">     
+        <Loginmenu/>
     </div>
   );
+  }
 }
 
 export default App;
