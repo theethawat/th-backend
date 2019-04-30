@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import 'bulma/css/bulma.css'
-import auth from './firebase'
-//import firebase from 'firebase'
+import firebase from './firebase'
 
 class Loginmenu extends Component {
     //constructor like oop
@@ -29,17 +28,24 @@ class Loginmenu extends Component {
             email:this.email,
             password:this.password
         })
-        auth.signInWithEmailAndPassword(this.state.email,this.state.password)
+      
+        firebase.auth().signInWithEmailAndPassword(this.state.email,this.state.password)
             .then(response => {
                 this.setState({
                     currentUser:response.user
                 })
+                console.log("Login Success")
+                console.log(this.state.currentUser)
             })
             .catch(error => {
                 this.setState({
                     message:error.message
                 })
+                console.log("Login Error")
+                console.log(this.state.message)   
+                console.log(this.state.email) 
             })
+
     }
 
     render() {
@@ -50,7 +56,7 @@ class Loginmenu extends Component {
                     <div className="column is-half">
                         <h1 className="title is-3">Theethawat Backend Application</h1>
                         <h4 className="subtitle is-4">Login</h4>
-                        <form onSubmit={this.onSubmit} >
+                        <form onSubmit={this.onSubmit}  >
                             <label className="label">Email</label>
                             <input className="input " onChange={this.onChange} type="email" name="email"></input>
                             <label className="label">Password</label>
