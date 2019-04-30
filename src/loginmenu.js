@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import 'bulma/css/bulma.css'
 import firebase from './firebase'
+import ActiveLogin from './ActiveLogin'
 
 class Loginmenu extends Component {
     //constructor like oop
@@ -36,6 +37,7 @@ class Loginmenu extends Component {
                 })
                 console.log("Login Success")
                 console.log(this.state.currentUser)
+                return this.loginPass();
             })
             .catch(error => {
                 this.setState({
@@ -46,6 +48,10 @@ class Loginmenu extends Component {
                 console.log(this.state.email) 
             })
 
+    }
+
+    loginPass() {
+           return ActiveLogin
     }
 
     render() {
