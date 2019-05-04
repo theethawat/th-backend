@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import 'bulma/css/bulma.css'
-import LoginMenu from "./LoginControl";
 class ActiveLogin extends Component {
     constructor(props) {
         super(props)

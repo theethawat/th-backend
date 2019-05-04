@@ -21,6 +21,7 @@ class LoginControl extends Component {
             if (user) {
                 this.setState({
                     currentUser: user,
+                    login:true
                 })
             }
         })
@@ -44,7 +45,6 @@ class LoginControl extends Component {
             .then(response => {
                 this.setState({
                     currentUser: response.user,
-                    login: true
                 })
                 console.log("Login Success")
                 console.log(this.state.currentUser)
@@ -60,21 +60,9 @@ class LoginControl extends Component {
 
     }
 
-    // handlingMethod = () => {
-    //     if(this.state.currentUser==null){
-    //         this.setState({
-    //             handlingpage:"Hello"
-    //         })
-    //     }
-    //     else{
-    //         this.setState({
-    //             handlingpage:"No login"
-    //         })
-    //     }
-    // }
 
     render() {
-        if (this.state.login == false) {
+        if (this.state.login === false) {
             return (
                 <div className="container">
                     <br />
@@ -104,4 +92,4 @@ class LoginControl extends Component {
     }
 
 }
-export default Loginmenu
+export default LoginControl
