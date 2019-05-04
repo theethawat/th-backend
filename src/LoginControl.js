@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import 'bulma/css/bulma.css'
 import firebase from './firebase'
 import Homepage from './ActiveLogin'
+
 class LoginControl extends Component {
     //constructor like oop
     constructor(props) {
@@ -9,23 +10,24 @@ class LoginControl extends Component {
         this.state = {
             email: '',
             password: '',
-            currentUser: null,
+            currentUser: '',
             message: '',
             login: false
         }
     }
 
     //Method or function
-    componentDidMount() {
-        firebase.auth().onAuthStateChanged(user => {
-            if (user) {
-                this.setState({
-                    currentUser: user,
-                    login:true
-                })
-            }
-        })
-    }
+    // componentDidMount() {
+    //     firebase.auth().onAuthStateChanged(user => {
+    //         if (user) {
+    //             this.setState({
+    //                 currentUser: user,
+    //                 login:true
+    //             })
+    //         }
+    //     })
+    // }
+
     onChange = e => {
         const { name, value } = e.target
         this.setState({
@@ -34,17 +36,19 @@ class LoginControl extends Component {
     }
 
     onSubmit = e => {
+
         e.preventDefault()
+        // window.alert("Loggin in")
         this.setState({
             email: this.email,
-            password: this.password
+            password: this.password,
         })
-        console.log("Login Methodology Start")
-
+        console.log("Email: " + this.state.email + "  Password: " + this.state.password)
         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
             .then(response => {
                 this.setState({
                     currentUser: response.user,
+                    login: true
                 })
                 console.log("Login Success")
                 console.log(this.state.currentUser)
@@ -68,9 +72,9 @@ class LoginControl extends Component {
                     <br />
                     <div className="columns">
                         <div className="column is-half">
-                            <h1 className="title is-3">Theethawat Backend Application</h1>
+                            <h1 className="title is-3">Theethawat Sa Backend Application</h1>
                             <h4 className="subtitle is-4">Login</h4>
-                            <form onSubmit={this.onSubmit}  >
+                            <form onSubmit={this.onSubmit}>
                                 <label className="label">Email</label>
                                 <input className="input " onChange={this.onChange} type="email" name="email"></input>
                                 <label className="label">Password</label>
@@ -80,16 +84,16 @@ class LoginControl extends Component {
                             </form>
                         </div>
                     </div>
-
                 </div>
             )
         }
-        else {
-            return (
-                <Homepage />
+        else{
+            return(
+                <Homepage/>
             )
         }
     }
+    
 
 }
 export default LoginControl
