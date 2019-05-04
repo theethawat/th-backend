@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import 'bulma/css/bulma.css'
 import firebase from './firebase'
-import LoginMenu from './Components/Loginmenu'
 import Homepage from './ActiveLogin'
-class Loginmenu extends Component {
+class LoginControl extends Component {
     //constructor like oop
     constructor(props) {
         super(props)
@@ -12,16 +11,16 @@ class Loginmenu extends Component {
             password: '',
             currentUser: null,
             message: '',
-            handlingpage:''
+            login: false
         }
     }
-    
+
     //Method or function
     componentDidMount() {
         firebase.auth().onAuthStateChanged(user => {
             if (user) {
                 this.setState({
-                    currentUser: user
+                    currentUser: user,
                 })
             }
         })
@@ -36,17 +35,18 @@ class Loginmenu extends Component {
     onSubmit = e => {
         e.preventDefault()
         this.setState({
-            email: this.props.email,
-            password: this.props.password
+            email: this.email,
+            password: this.password
         })
-        console.log("Login Methodology Start") 
+        console.log("Login Methodology Start")
 
         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
             .then(response => {
                 this.setState({
-                    currentUser: response.user
+                    currentUser: response.user,
+                    login: true
                 })
-                console.log("Login Success") 
+                console.log("Login Success")
                 console.log(this.state.currentUser)
             })
             .catch(error => {
@@ -73,28 +73,35 @@ class Loginmenu extends Component {
     //     }
     // }
 
-    render(){
-        return(
-            <div className="container">
-                <br />
-                <div className="columns">
-                    <div className="column is-half">
-                        <h1 className="title is-3">Theethawat Backend Application</h1>
-                        <h4 className="subtitle is-4">Login</h4>
-                        <form onSubmit={this.onSubmit}  >
-                            <label className="label">Email</label>
-                            <input className="input " onChange={this.onChange} type="email" name="email"></input>
-                            <label className="label">Password</label>
-                            <input className="input " onChange={this.onChange} type="password" name="password"></input>
-                            <br />
-                            <button type="submit" className="button is-info">Login</button>
-                        </form>
+    render() {
+        if (this.state.login == false) {
+            return (
+                <div className="container">
+                    <br />
+                    <div className="columns">
+                        <div className="column is-half">
+                            <h1 className="title is-3">Theethawat Backend Application</h1>
+                            <h4 className="subtitle is-4">Login</h4>
+                            <form onSubmit={this.onSubmit}  >
+                                <label className="label">Email</label>
+                                <input className="input " onChange={this.onChange} type="email" name="email"></input>
+                                <label className="label">Password</label>
+                                <input className="input " onChange={this.onChange} type="password" name="password"></input>
+                                <br />
+                                <button type="submit" className="button is-info">Login</button>
+                            </form>
+                        </div>
                     </div>
-                </div>
 
-            </div>
-        )
+                </div>
+            )
+        }
+        else {
+            return (
+                <Homepage />
+            )
+        }
     }
-    
+
 }
 export default Loginmenu
