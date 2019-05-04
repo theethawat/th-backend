@@ -1,14 +1,15 @@
 import React, {Component} from "react";
 import 'bulma/css/bulma.css'
-import LoginMenu from "./Loginmenu";
+import LoginMenu from "./LoginControl";
 class ActiveLogin extends Component {
     constructor(props) {
         super(props)
-        this.setstate = {
+        this.state = {
           currentUser: this.props.currentUser,
         }
       }
     render(){
+    
         return(
             <div className="container">
                 <h4>Welcome</h4>
