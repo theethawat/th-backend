@@ -8,11 +8,19 @@ class App extends Component {
     this.state = {
       email: '',
       password: '',
-      currentUser: '',
+      currentUser: null,
       message: '',
     }
   }
+ 
+
   render() {
+    if (this.props.currentUser != null) {
+      this.setState({
+        currentUser:this.props.currentUser
+      })
+      console.log("Handling Back Success")
+    }
     if (this.state.currentUser == null) {
       return (
         <div className="App">

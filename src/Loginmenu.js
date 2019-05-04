@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import 'bulma/css/bulma.css'
 import firebase from './firebase'
+import App from './App';
 
 class Loginmenu extends Component {
     //constructor like oop
@@ -20,6 +21,10 @@ class Loginmenu extends Component {
                  this.setState({
                     currentUser:user
                 })
+                return(
+                    <App currentUser={this.state.currentUser} />
+                )
+                
              }
          })
      }
