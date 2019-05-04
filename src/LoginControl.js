@@ -1,69 +1,80 @@
 import React, { Component } from 'react';
 import 'bulma/css/bulma.css'
 import firebase from './firebase'
-import App from './App';
-
+import LoginMenu from './Components/Loginmenu'
+import Homepage from './ActiveLogin'
 class Loginmenu extends Component {
     //constructor like oop
-    constructor(props){
+    constructor(props) {
         super(props)
         this.state = {
-            email:'',
-            password:'',
-            currentUser:'',
-            message:''
+            email: '',
+            password: '',
+            currentUser: null,
+            message: '',
+            handlingpage:''
         }
     }
+    
     //Method or function
-     componentDidMount(){
-         firebase.auth().onAuthStateChanged(user => {
-             if(user) {
-                 this.setState({
-                    currentUser:user
+    componentDidMount() {
+        firebase.auth().onAuthStateChanged(user => {
+            if (user) {
+                this.setState({
+                    currentUser: user
                 })
-                return(
-                    <App currentUser={this.state.currentUser} />
-                )
-                
-             }
-         })
-     }
-    onChange = e =>{
-        const {name,value} = e.target
+            }
+        })
+    }
+    onChange = e => {
+        const { name, value } = e.target
         this.setState({
-            [name]:value
+            [name]: value
         })
     }
 
     onSubmit = e => {
         e.preventDefault()
         this.setState({
-            email:this.email,
-            password:this.password
+            email: this.props.email,
+            password: this.props.password
         })
-      
-        firebase.auth().signInWithEmailAndPassword(this.state.email,this.state.password)
+        console.log("Login Methodology Start") 
+
+        firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
             .then(response => {
                 this.setState({
-                    currentUser:response.user
+                    currentUser: response.user
                 })
-                console.log("Login Success")
+                console.log("Login Success") 
                 console.log(this.state.currentUser)
             })
             .catch(error => {
                 this.setState({
-                    message:error.message
+                    message: error.message
                 })
                 console.log("Login Error")
-                console.log(this.state.message)   
-                console.log(this.state.email) 
+                console.log(this.state.message)
+                console.log(this.state.email)
             })
 
     }
 
+    // handlingMethod = () => {
+    //     if(this.state.currentUser==null){
+    //         this.setState({
+    //             handlingpage:"Hello"
+    //         })
+    //     }
+    //     else{
+    //         this.setState({
+    //             handlingpage:"No login"
+    //         })
+    //     }
+    // }
 
-    render() {
-        return (
+    render(){
+        return(
             <div className="container">
                 <br />
                 <div className="columns">
@@ -80,10 +91,10 @@ class Loginmenu extends Component {
                         </form>
                     </div>
                 </div>
-                
-            </div>
 
+            </div>
         )
     }
+    
 }
 export default Loginmenu
