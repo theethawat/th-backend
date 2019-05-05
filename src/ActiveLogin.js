@@ -4,7 +4,7 @@ class ActiveLogin extends Component {
     constructor(props) {
         super(props)
         this.state = {
-          currentUser: this.props.currentUser,
+          currentUser: this.props.value,
         }
       }
     render(){
@@ -12,7 +12,7 @@ class ActiveLogin extends Component {
         return(
             <div className="container">
                 <h4>Welcome</h4>
-                <h5>Now User is {this.state.currentUser} Props Value is {this.props.currentUser} </h5>
+                <h5>Now User is {this.state.currentUser.email}  </h5>
             </div>
         )
     }

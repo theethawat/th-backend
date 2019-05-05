@@ -17,16 +17,16 @@ class LoginControl extends Component {
     }
 
     //Method or function
-    // componentDidMount() {
-    //     firebase.auth().onAuthStateChanged(user => {
-    //         if (user) {
-    //             this.setState({
-    //                 currentUser: user,
-    //                 login:true
-    //             })
-    //         }
-    //     })
-    // }
+    componentDidMount() {
+        firebase.auth().onAuthStateChanged(user => {
+            if (user) {
+                this.setState({
+                    currentUser: user,
+                    login:true
+                })
+            }
+        })
+    }
 
     onChange = e => {
         const { name, value } = e.target
@@ -89,7 +89,7 @@ class LoginControl extends Component {
         }
         else{
             return(
-                <Homepage/>
+                <Homepage value={this.state.currentUser}/>
             )
         }
     }
