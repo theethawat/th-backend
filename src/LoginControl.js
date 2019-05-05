@@ -27,7 +27,8 @@ class LoginControl extends Component {
             }
         })
     }
-
+    
+    
     onChange = e => {
         const { name, value } = e.target
         this.setState({
@@ -63,7 +64,7 @@ class LoginControl extends Component {
             })
 
     }
-
+   
 
     render() {
         if (this.state.login === false) {
@@ -82,6 +83,7 @@ class LoginControl extends Component {
                                 <br />
                                 <button type="submit" className="button is-info">Login</button>
                             </form>
+                            <br/>
                         </div>
                     </div>
                 </div>
