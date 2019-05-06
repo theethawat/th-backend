@@ -4,6 +4,7 @@ import firebase from './firebase'
 import App from "./App";
 import Navbar from './Components/Navbar'
 import AddHappiness from './Components/AddHappiness'
+import ShowHappiness from "./Components/ShowHappiness"
 
 class ActiveLogin extends Component {
     constructor(props) {
@@ -39,14 +40,6 @@ class ActiveLogin extends Component {
                     username: username
                 })
             })
-            console.log(firebase.auth.Auth.Persistence.SESSION)
-            // firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
-            // .then(()=>{
-            //     console.log("You are in Session")
-            // })
-            // .catch(error=>{
-            //     console.log(Error + error.code)
-            // })
         }
     }
 
@@ -69,9 +62,9 @@ class ActiveLogin extends Component {
                         <AddHappiness user={this.state.currentUser}/>
                     </div>
                     <div className="column">
+                        <ShowHappiness />
                     </div>
-                    <div className="column">
-                    </div>
+                    
                 </div>
                
             </div>
