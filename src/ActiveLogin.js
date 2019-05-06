@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import 'bulma/css/bulma.css'
 import firebase from './firebase'
 import App from "./App";
-import { database } from "firebase";
 class ActiveLogin extends Component {
     constructor(props) {
         super(props)
@@ -36,10 +35,8 @@ class ActiveLogin extends Component {
                this.setState({
                    username:username
                })
-           })
-           
+           })   
        }
-       
    }
    
     render(){
