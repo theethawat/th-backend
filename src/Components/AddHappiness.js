@@ -28,8 +28,10 @@ class AddHappiness extends Component {
             level:this.level
         })
         console.log("Level in State "+this.state.level)
-         
-        firebase.database().ref('happiness').set({
+   
+        let postRef = firebase.database().ref('happiness')
+        let newPostRef=postRef.push()
+        newPostRef.set({
                     date:today,
                     level:this.state.level,
                     userId:this.state.user.uid
