@@ -1,55 +1,79 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import 'bulma/css/bulma.css'
 import firebase from './firebase'
 import App from "./App";
+import Navbar from './Components/Navbar'
+import AddHappiness from './Components/AddHappiness'
+
 class ActiveLogin extends Component {
     constructor(props) {
         super(props)
         this.state = {
-          currentUser: this.props.value,
-          login:true,
-          username:''
+            currentUser: this.props.value,
+            login: true,
+            username: ''
         }
-      }
-    onLogout = () =>{
+    }
+    onLogout = () => {
         firebase.auth().signOut().then(
-              () => {
+            () => {
                 this.setState({
-                login:false
+                    login: false
                 })
                 alert("Sign Out Success")
             }
-            
-        ).catch(function(error) {
+
+        ).catch(function (error) {
             window.alert("Cannot Sign Out" + error)
         })
-   } 
-  
-   componentDidMount(){
-       if(this.state.login == true){
-           let userId= this.state.currentUser.uid
-           console.log(userId)
-           let memberUser = firebase.database().ref("users/"+userId)
-           memberUser.once('value').then(snapshot=>{
-               let username =  snapshot.val().username
-               this.setState({
-                   username:username
-               })
-           })   
-       }
-   }
-   
-    render(){
-        if(this.state.login == false)
-        return(
-            <App/>
-        )
-        return(
-            <div className="container">
-                <h4>Welcome</h4>
-                <h5>Now User is {this.state.currentUser.email}  </h5>
-                <button type="button" onClick ={this.onLogout} className="button is-primary">Logout</button>
-                <h5>User Id {this.state.username}</h5>
+    }
+
+    componentDidMount() {
+        if (this.state.login == true) {
+            let userId = this.state.currentUser.uid
+            console.log(userId)
+            let memberUser = firebase.database().ref("users/" + userId)
+            memberUser.once('value').then(snapshot => {
+                let username = snapshot.val().username
+                this.setState({
+                    username: username
+                })
+            })
+            console.log(firebase.auth.Auth.Persistence.SESSION)
+            // firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
+            // .then(()=>{
+            //     console.log("You are in Session")
+            // })
+            // .catch(error=>{
+            //     console.log(Error + error.code)
+            // })
+        }
+    }
+
+    render() {
+        if (this.state.login == false)
+            return (
+                <App />
+            )
+        return (
+            <div>
+                <Navbar username={this.state.username} user={this.state.currentUser}/>
+                <div className="container">
+                    <h4>Welcome</h4>
+                    <h5>Now User is {this.state.currentUser.email}  </h5>
+                    <button type="button" onClick={this.onLogout} className="button is-primary">Logout</button>
+                    <h5>User Id {this.state.username}</h5>
+                </div>
+                <div className="columns">
+                    <div className="column">
+                        <AddHappiness user={this.state.currentUser}/>
+                    </div>
+                    <div className="column">
+                    </div>
+                    <div className="column">
+                    </div>
+                </div>
+               
             </div>
         )
     }
