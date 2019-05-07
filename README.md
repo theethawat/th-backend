@@ -9,6 +9,9 @@
 * Managing System for me about happiness managing in daliy life
 * Theethawat Savastham
 
+
+![App-Photo](https://github.com/th-backend/capture.jpg)
+
 ## คำอธิบาย
 Theethawat Application สร้างขึ้นโดยใช้ React,Firebase Authenthication รูปแบบ Email and Password
  และ Firebase Realtime Database เพื่อที่จะให้ชัวร์ว่าคนที่สามารถเข้าไปแก้ไขข้อมูลในฐานข้อมูลนี้มีสิทธิในการเข้าไปเขียน แต่ทุกคนมีสิทธิในการอ่าน โครงการนี้เป็นโครงการเพื่อการศึกษา โดยใช้การ deploy แบบ serverless บน firebase hosting 
