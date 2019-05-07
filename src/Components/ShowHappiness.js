@@ -14,7 +14,7 @@ class ShowHappiness extends Component {
     }
     
     componentDidMount(){
-        let userStatShow = firebase.database().ref("happiness").orderByChild("level")
+        let userStatShow = firebase.database().ref("happiness").orderByChild("date").limitToLast(5)
         userStatShow.on('value', snapshot => {
             let arrayHappy = []
             snapshot.forEach(childSnapshot=> {
@@ -28,19 +28,21 @@ class ShowHappiness extends Component {
         })
 
     }
+   
     
     render(){
-        let healthInfo = this.state.happiness
+         let healthInfo = this.state.happiness
         console.log(healthInfo)
-        let healthInfoShow = healthInfo.map((member) =>
+        let  healthInfoShow = healthInfo.map((member) =>
           <ul>
-            <li>Date and Time : {member.date} </li>
-            <li>happiness : {member.level} </li>
+                <li title={"เก็บข้อมูลเมื่อ "+member.date} >Happy Level {member.level} </li>
+                <li><progress className={(member.level) > 5 ?"progress mcs-w60 piccenter is-primary":" progress mcs-w60 piccenter is-warning"} value={member.level} max="10"> {member.level * 100} % </progress></li>
         </ul>
         )
-        console.log(healthInfo)
         return(
             <div>
+                <h3 className="title is-5">Happiness Record</h3>
+                <p>Last 5 Record</p>
                 {healthInfoShow}        
             </div>
         )

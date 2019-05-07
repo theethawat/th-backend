@@ -1,3 +1,14 @@
 .mcs-logo{
     padding:0.6em;
 }
+.mcs-w80{
+    width: 80%;
+}
+.mcs-w60{
+    width: 60%;
+}
+.piccenter{
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}

@@ -47,7 +47,8 @@ class AddHappiness extends Component {
         return (
             <form onSubmit={this.onHappinessSubmit}>
                 <label className="label">Add Your Happiness Level</label>
-                <input type="number" className="input" name="level" max="10" onChange={this.onChange}/>
+                <input type="number" className="input mcs-w80" name="level" max="10" onChange={this.onChange}/>
+                <br/>
                 <button className="button is-info" type="submit"> Add Your Happiness to Database </button>
             </form>
         )

@@ -55,7 +55,6 @@ class ActiveLogin extends Component {
                     <h4>Welcome</h4>
                     <h5>Now User is {this.state.currentUser.email}  </h5>
                     <button type="button" onClick={this.onLogout} className="button is-primary">Logout</button>
-                    <h5>User Id {this.state.username}</h5>
                 </div>
                 <div className="columns">
                     <div className="column">
