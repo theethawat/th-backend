@@ -11,16 +11,19 @@ class ShowHappiness extends Component {
                 {level:'',date:''}
             ),
         }
+    }
+    
+    componentDidMount(){
         let userStatShow = firebase.database().ref("happiness").orderByChild("level")
         userStatShow.on('value', snapshot => {
             snapshot.forEach(()=> {
                 this.setState({
-                    happiness: snapshot.val()
+                    happiness: Array(snapshot.val())
                 })
             })
         })
+
     }
-    
     
     render(){
         let healthInfo = this.state.happiness
