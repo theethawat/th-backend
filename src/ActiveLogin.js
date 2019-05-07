@@ -5,6 +5,7 @@ import App from "./App";
 import Navbar from './Components/Navbar'
 import AddHappiness from './Components/AddHappiness'
 import ShowHappiness from "./Components/ShowHappiness"
+import Weather from "./Components/Weather"
 
 class ActiveLogin extends Component {
     constructor(props) {
@@ -61,11 +62,13 @@ class ActiveLogin extends Component {
                         <AddHappiness user={this.state.currentUser}/>
                     </div>
                     <div className="column">
+                        <Weather/>
                         <ShowHappiness />
                     </div>
                     
                 </div>
-               
+               <p>Theethawat Savastham | Distributed Computing and Web Technologies 2018<br/>
+               GitHub: <a href="https://github.com/theethawat/th-backend">th-backend</a>  Website: <a href="https://theethawatapp.firebaseapp.com">theethawatapp.firebaseapp.com</a></p>
             </div>
         )
     }

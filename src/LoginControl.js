@@ -84,9 +84,9 @@ class LoginControl extends Component {
                                 <button type="submit" className="button is-info">Login</button>
                             </form>
                             <br/>
-                            <h5 className="subtitle is-5">Not Finished Coming Soon Sorry For Late Finished</h5>
+                            <h5 className="subtitle is-5"></h5>
                             <p>Test User Username: <b>test@example.com</b> password: <b>1234567</b></p>
-                            <p>Current Document <a href="https://drive.google.com/file/d/1ifdFK-0ahQaMJI8Uw8_s6iLvCspZhjk5/view?usp=sharing">Document Report Update 6 May 2019</a></p>
+                            <p>Current Document <a href="https://drive.google.com/open?id=1lalPPFHU2D1EBMLmAC7ODdnLU-jIVM6-">Document Report Update 6 May 2019</a></p>
                         </div>
                     </div>
                 </div>

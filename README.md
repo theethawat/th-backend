@@ -3,9 +3,24 @@
 [![Build Status](https://dev.azure.com/theethawats/theethawatpredev/_apis/build/status/theethawat.th-backend?branchName=master)](https://dev.azure.com/theethawats/theethawatpredev/_build/latest?definitionId=3&branchName=master)
 
 ## Description
+* Website https://theethawatapp.firebaseapp.com
 * Distributed Computing and Web Technologies Assignment 
 * React + Firebase Authenthication + Firebase Realtime Database
+* Managing System for me about happiness managing in daliy life
 * Theethawat Savastham
+
+## คำอธิบาย
+Theethawat Application สร้างขึ้นโดยใช้ React,Firebase Authenthication รูปแบบ Email and Password
+ และ Firebase Realtime Database เพื่อที่จะให้ชัวร์ว่าคนที่สามารถเข้าไปแก้ไขข้อมูลในฐานข้อมูลนี้มีสิทธิในการเข้าไปเขียน แต่ทุกคนมีสิทธิในการอ่าน โครงการนี้เป็นโครงการเพื่อการศึกษา โดยใช้การ deploy แบบ serverless บน firebase hosting 
+และใช้ Azure Pipelines ในการเป็น Continuous Integrating โดยเว็บไซต์เก็บ level ความสุข  1- 10
+ที่ได้นี้ยังมีข้อเสียด้านการ Fetch ข้อมูล เรามีการระบุไว้แล้วว่าใครเป็นเจ้าของข้อมูล แต่ตอนเอามาแสดงนั้นเรารวมทุกคนเลย นำมาแสดงเป็น progressing ขอส่งครับ
+
+## Report
+https://drive.google.com/open?id=1lalPPFHU2D1EBMLmAC7ODdnLU-jIVM6-
+
+## สิ่งที่อาจจะทำเพิ่ม
+* Blog with GatsbyJS
+* Weather show with Rest API 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
