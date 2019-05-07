@@ -10,7 +10,7 @@
 * Theethawat Savastham
 
 
-![App-Photo](https://github.com/th-backend/capture.jpg)
+![App-Photo](https://github.com/theethawat/th-backend/capture.jpg)
 
 ## คำอธิบาย
 Theethawat Application สร้างขึ้นโดยใช้ React,Firebase Authenthication รูปแบบ Email and Password
