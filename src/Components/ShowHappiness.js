@@ -16,10 +16,14 @@ class ShowHappiness extends Component {
     componentDidMount(){
         let userStatShow = firebase.database().ref("happiness").orderByChild("level")
         userStatShow.on('value', snapshot => {
-            snapshot.forEach(()=> {
-                this.setState({
-                    happiness: Array(snapshot.val())
-                })
+            let arrayHappy = []
+            snapshot.forEach(childSnapshot=> {
+                let childKey = childSnapshot.key
+                let childData = childSnapshot.val()
+               arrayHappy.push(childData) 
+            }) 
+            this.setState({
+                    happiness: arrayHappy
             })
         })
 
